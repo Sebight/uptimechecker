@@ -1,0 +1,2 @@
+# uptimechecker
+fun weekend project
