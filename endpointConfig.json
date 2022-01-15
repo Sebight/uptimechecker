@@ -1,7 +1,7 @@
 {
     "endpoints": [
         {
-            "url": "http://127.0.0.1:2083/authors",
+            "url": "https://vsj-api.netpioneer.cz/restaurants/all",
             "method": "get"
         }
     ]

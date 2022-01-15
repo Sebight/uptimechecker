@@ -1,15 +1,20 @@
 import axios from 'axios';
 import { errorMonitor } from 'events';
 import { performance } from 'perf_hooks';
+import { endpointOutput } from './Classes/endpointOuput';
+import * as performanceAnalyzer from './Performance/performanceAnalyzer';
 
 export async function Check(config: any)
 {
     let endpoints = config.endpoints;
+    let result: endpointOutput[] = [];
 
+    performanceAnalyzer.startTimer("Endpoint Status Check");
     for (let endpoint of endpoints)
     {
-        let result = "";
-        let time1 = performance.now();
+        performanceAnalyzer.startTimer(endpoint.url+" status check");
+        let output = new endpointOutput(endpoint.url, "");
+
         try {
             let url = endpoint.url;
             let method = endpoint.method;
@@ -19,23 +24,20 @@ export async function Check(config: any)
                 url: url,
                 headers: headers
             });
-            if (response.status == 200)
+            if (response.status >= 200 && response.status <= 299)
             {
-                console.log("endpoint available ("+url+")");
-                result = "endpoint available ("+url+")";
+                output.status = "up";
+            } else {
+                output.status = "down";
             }
-            // console.log(response.status + " on endpoint " + url);    
         } catch(error: any)
         {
-            console.log("endpoint is either down, or unavailable ("+endpoint.url+")");
-            result = "endpoint is either down, or unavailable ("+endpoint.url+")";
+            output.status = "down";
         }
-
-        let time2 = performance.now();
-        let timeTaken = time2 - time1;
-
-        if (process.env.LOG_TIME == "YES") console.log("[connectionChecker] Time taken sending request: " + timeTaken + "ms");
-        return result;
+        performanceAnalyzer.endTimer(endpoint.url+" status check");
+        result.push(output);
     }
+    performanceAnalyzer.endTimer("Endpoint Status Check");
+    return JSON.stringify(result);
 }
 
