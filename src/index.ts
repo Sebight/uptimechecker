@@ -16,10 +16,12 @@ const router = express.Router();
 
 app.use(router);
 
-router.get('/check', async (req: any, res: any) => {
-    performanceAnalyzer.startTimer("Config Load");
-    let config = await configLoader.loadConfig();
-    performanceAnalyzer.endTimer("Config Load");
+router.get('/check/:cfgJson', async (req: any, res: any) => {
+    let cfgJson = req.params.cfgJson;
+    let config = JSON.parse(unescape(cfgJson));
+    // performanceAnalyzer.startTimer("Config Load");
+    // let config = await configLoader.loadConfig();
+    // performanceAnalyzer.endTimer("Config Load");
     let result = await connectionChecker.Check(config);
     res.send(result);
 });
