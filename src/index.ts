@@ -20,7 +20,6 @@ app.use(cors());
 app.use(router);
 
 router.get('/check/:cfgJson', async (req: any, res: any) => {
-    res.header("Access-Control-Allow-Origin", "*");
     let cfgJson = req.params.cfgJson;
     let config = JSON.parse(unescape(cfgJson));
     // performanceAnalyzer.startTimer("Config Load");
