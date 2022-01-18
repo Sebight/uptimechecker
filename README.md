@@ -3,6 +3,17 @@ Tool used to check status of various websites, services, and endpoints generally
 
 Currently only available as a NodeJS server.
 
+## Installation
+### Compile it yourself
+ 1. Clone this repository.
+ 2. Run **npm i** in the root.
+ 3. Run **npx tsc** in the root.
+ 4. Start the server with **node build/index.js**
+
+### Download the compiled build
+
+1. TBA
+
 ## Usage: 
 Simply send a get request to the server with the following encapsulated parameters:
 ```json
@@ -57,4 +68,3 @@ The only possible limitation is that you exceed the size of url parameter. Thoug
 ## TODO
 1. Expand this into a npm module.
 2. Make more stuff controllable from the config.
-
