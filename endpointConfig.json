@@ -1,7 +1,7 @@
 {
     "endpoints": [
         {
-            "url": "https://vsj-api.netpioneer.cz/restaurants/all",
+            "url": "https://google.com",
             "method": "get"
         }
     ]
