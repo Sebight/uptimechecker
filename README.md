@@ -9,10 +9,13 @@ Currently only available as a NodeJS server.
  2. Run **npm i** in the root.
  3. Run **npx tsc** in the root.
  4. Start the server with **node build/index.js**
+ 5. Enjoy.
 
 ### Download the compiled build
 
-1. TBA
+1. Install the latest build from releases.
+2. Run **node build/index.js**
+3. Enjoy.
 
 ## Usage: 
 Simply send a get request to the server with the following encapsulated parameters:
