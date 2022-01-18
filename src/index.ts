@@ -25,11 +25,6 @@ router.get('/check/:cfgJson', async (req: any, res: any) => {
     res.send(result);
 });
 
-router.get("/endpoint1", (req: any, res: any) => {
-    res.send("endpoint1");
-});
-
-
 app.listen(port, () => {
 
 });
