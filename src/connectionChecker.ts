@@ -45,26 +45,6 @@ export async function Check(config: any) {
                 output.responseTime = Math.round(responseTime);
             }
         });
-
-        // try {
-        //     let url = endpoint.url;
-        //     let method = endpoint.method;
-        //     let headers = endpoint.headers;
-        //     let response = await axios({
-        //         method: method,
-        //         url: url,
-        //         headers: headers
-        //     });
-        //     if (response.status >= 200 && response.status <= 299)
-        //     {
-        //         output.status = "up";
-        //     } else {
-        //         output.status = "down";
-        //     }
-        // } catch(error: any)
-        // {
-        //     output.status = "down";
-        // }
         result.push(output);
     }
     return JSON.stringify(result);
